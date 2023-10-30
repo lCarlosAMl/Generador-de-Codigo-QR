@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>        
+    <title>Generador de Código QR</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel="stylesheet" href='style.css'>    
+</head>
+<body>
+    <div  class="container">
+        <p>Ingrese un enlace o texto a convertir.</p>
+        <input type="text" placeholder="Texto o enlace" id="TextoQR">
+
+        <div id="imgBox">
+            <img src="" id="ImagenQR">
+        </div>
+
+        <button onclick="GeneradorQR()">Generar Código QR</button>
+        
+    </div>
+</body>
+</html><!DOCTYPE html>
+
+<script>
+
+    let imgBox = document.getElementById("imgBox");
+    let ImagenQR = document.getElementById("ImagenQR");
+    let TextoQR = document.getElementById("TextoQR");
+
+function GeneradorQR(){
+
+    if(TextoQR.value.length >0){
+        ImagenQR.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + TextoQR.value;
+        imgBox.classList.add("show-img");
+    }else{
+        TextoQR.classList.add('error');
+        setTimeout(()=>{
+            TextoQR.classList.remove('error');
+        },1000);
+
+    }
+
+}
+
+</script>
